@@ -6,6 +6,8 @@ import (
 )
 
 func main() {
-	PlayerOne := engine.NewPlayer("eric", "char", "necromancer")
-	fmt.Println(PlayerOne.Name)
+	PlayerOne := engine.NewPlayer("eric", "char", "warrior")
+	fmt.Println(PlayerOne.Skills)
+
+	fmt.Println(PlayerOne.ListSkills())
 }

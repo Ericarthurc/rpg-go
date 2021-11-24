@@ -4,16 +4,16 @@ type Player struct {
 	Name             string
 	Race             string
 	Role             string
-	playerExperience int
-	playerLevel      int
-	health           int
-	mana             int
-	attack           int
-	armor            int
-	evade            int
-	speed            int
-	luck             int
-	skills           []int
+	PlayerExperience int
+	PlayerLevel      int
+	Health           int
+	Mana             int
+	Attack           int
+	Armor            int
+	Evade            int
+	Speed            int
+	Luck             int
+	Skills           []int
 }
 
 func NewPlayer(name, race, role string) *Player {
@@ -21,14 +21,37 @@ func NewPlayer(name, race, role string) *Player {
 	p.Name = name
 	p.Race = race
 	p.Role = role
-	p.playerExperience = 0
-	p.playerLevel = 0
-	p.health = RaceMap[race].health + RoleMap[role].health
-	p.mana = RaceMap[race].mana + RoleMap[role].mana
-	p.attack = RaceMap[race].attack + RoleMap[role].attack
-	p.armor = RaceMap[race].armor + RoleMap[role].armor
-	p.evade = RaceMap[race].evade + RoleMap[role].evade
-	p.speed = RaceMap[race].speed + RoleMap[role].speed
-	p.luck = RaceMap[race].luck + RoleMap[role].luck
+	p.PlayerExperience = 0
+	p.PlayerLevel = 0
+	p.Health = RaceMap[race].health + RoleMap[role].health
+	p.Mana = RaceMap[race].mana + RoleMap[role].mana
+	p.Attack = RaceMap[race].attack + RoleMap[role].attack
+	p.Armor = RaceMap[race].armor + RoleMap[role].armor
+	p.Evade = RaceMap[race].evade + RoleMap[role].evade
+	p.Speed = RaceMap[race].speed + RoleMap[role].speed
+	p.Luck = RaceMap[race].luck + RoleMap[role].luck
+
+	for _, v := range SkillMap[role] {
+		if v.levelRequirement == 0 {
+			p.Skills = append(p.Skills, v.id)
+		}
+	}
+
 	return p
+}
+
+func (p Player) ListSkills() []Skill {
+	var equipped []Skill
+	for _, id := range p.Skills {
+		for _, v := range SkillMap[p.Role] {
+			if v.id == id {
+				equipped = append(equipped, v)
+			}
+		}
+	}
+	return equipped
+}
+
+func Attack(bot Player) {
+
 }
