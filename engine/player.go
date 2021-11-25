@@ -40,6 +40,10 @@ func NewPlayer(name, race, role string) *Player {
 	return p
 }
 
+func (p *Player) LevelUp() {
+
+}
+
 func (p Player) ListSkills() []Skill {
 	var equipped []Skill
 	for _, id := range p.Skills {
@@ -52,6 +56,6 @@ func (p Player) ListSkills() []Skill {
 	return equipped
 }
 
-func Attack(bot Player) {
+func Attack(n NPC) {
 
 }
