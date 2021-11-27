@@ -56,6 +56,10 @@ func (p Player) ListSkills() []Skill {
 	return equipped
 }
 
+func (p *Player) Heal() {
+
+}
+
 func Attack(n NPC) {
 
 }
