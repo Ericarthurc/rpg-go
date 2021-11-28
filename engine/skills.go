@@ -12,7 +12,7 @@ type Skill struct {
 var SkillMap = map[string][]Skill{
 	"warrior": {
 		{
-			id:               67,
+			id:               1,
 			skillName:        "Head Butt",
 			description:      "Swing your head forward with mighty force!",
 			damage:           5,
